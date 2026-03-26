@@ -12,6 +12,10 @@
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 92px;
+}
 body {
   font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
   color: var(--text);
@@ -191,6 +195,32 @@ h2 { margin: 0 0 1.5rem; font-size: clamp(1.5rem, 3vw, 2rem); }
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
+
+.menu-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.menu-item {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  padding: 1rem 1rem 0.9rem;
+}
+.menu-item h3 {
+  margin: 0;
+  font-size: 1.03rem;
+}
+.menu-item p {
+  margin: 0.35rem 0 0.7rem;
+  color: var(--subtext);
+  font-size: 0.94rem;
+}
+.menu-item strong {
+  color: #9f7c16;
+  font-size: 1.05rem;
+}
 .strength-card { padding: 1.4rem 1.2rem; }
 .strength-icon {
   font-size: 1.8rem;
@@ -253,6 +283,31 @@ h2 { margin: 0 0 1.5rem; font-size: clamp(1.5rem, 3vw, 2rem); }
 }
 .faq p { margin: .8rem 0 0; color: var(--subtext); }
 
+.sns-section .sns-lead {
+  margin: 0 0 1.2rem;
+  color: var(--subtext);
+}
+.sns-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.sns-card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+  text-align: center;
+}
+.sns-card h3 {
+  margin: 0.85rem 0 0.8rem;
+}
+.qr-placeholder {
+  min-height: 220px;
+  border-radius: 12px;
+}
+
 .site-footer {
   background: #2f261b;
   color: #f2e8d3;
@@ -312,9 +367,12 @@ h2 { margin: 0 0 1.5rem; font-size: clamp(1.5rem, 3vw, 2rem); }
   .info-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
   .link-grid { grid-template-columns: 1fr; }
+  .menu-list,
+  .sns-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
+  html { scroll-padding-top: 82px; }
   body { padding-bottom: 64px; }
   .desktop-nav { display: none; }
   .mobile-menu { display: block; }
