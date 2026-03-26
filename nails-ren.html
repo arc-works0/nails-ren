@@ -95,8 +95,8 @@
         <div class="fix-12-12">
           <ul class="flex fixedSpaces">
             <li class="col-6-12">
-              <div class="rounded shadow ae-5 fromCenter margin-bottom-tablet-4 thumbnail">
-                <img class="wide" src="./assets/img/owner.jpg" alt=""/>
+              <div class="rounded shadow ae-5 fromCenter margin-bottom-tablet-4 thumbnail image-fallback-container" data-placeholder-label="Salon Photo">
+                <img class="wide fallback-image" src="./assets/img/owner.jpg" alt=""/>
               </div>
             </li>
             <li class="col-1-12"></li>
@@ -161,10 +161,10 @@
             <div class="leftControl-82 ae-5 fromLeft" data-slider-id="82" data-slider-action="prev"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-left"></use></svg></div>
             <div class="rightControl-82 ae-5 fromRight" data-slider-id="82" data-slider-action="next"><svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use></svg></div>
             <ul class="slider clickable animated margin-bottom-2 ae-1 fadeIn" data-slider-id="82">
-              <li class="selected"><img src="assets/img/image1.jpg" alt=""/></li>
-              <li><img src="assets/img/image2.jpg" alt=""/></li>
-              <li><img src="assets/img/image3.jpg" alt=""/></li>
-              <li><img src="assets/img/image4.jpg" alt=""/></li>
+              <li class="selected image-fallback-container" data-placeholder-label="Gallery Image"><img class="fallback-image" src="assets/img/image1.jpg" alt=""/></li>
+              <li class="image-fallback-container" data-placeholder-label="Gallery Image"><img class="fallback-image" src="assets/img/image2.jpg" alt=""/></li>
+              <li class="image-fallback-container" data-placeholder-label="Gallery Image"><img class="fallback-image" src="assets/img/image3.jpg" alt=""/></li>
+              <li class="image-fallback-container" data-placeholder-label="Gallery Image"><img class="fallback-image" src="assets/img/image4.jpg" alt=""/></li>
             </ul>
             <ul class="controller dots ae-3 fromBottom" data-slider-id="82">
               <li class="dot selected"></li>
@@ -313,6 +313,26 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="js/slides.min.js?508341" type="text/javascript"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var fallbackImages = document.querySelectorAll(".fallback-image");
+    fallbackImages.forEach(function (img) {
+      img.addEventListener("error", function () {
+        var container = img.closest(".image-fallback-container");
+        if (container) {
+          container.classList.add("is-missing-image");
+        }
+      }, { once: true });
+
+      if (img.complete && img.naturalWidth === 0) {
+        var container = img.closest(".image-fallback-container");
+        if (container) {
+          container.classList.add("is-missing-image");
+        }
+      }
+    });
+  });
+</script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 

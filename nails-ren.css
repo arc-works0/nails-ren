@@ -1,6 +1,23 @@
 :root {
-  --booking-color: #e86f88;
-  --booking-color-hover: #d95b76;
+  --bg-offwhite: #f8f6f2;
+  --surface-offwhite: #fdfbf8;
+  --text-main: #2f2a23;
+  --text-sub: #6c6254;
+  --accent-gold: #d4af37;
+  --accent-gold-soft: #e4c86f;
+  --accent-gold-deep: #b8952f;
+  --booking-color: var(--accent-gold);
+  --booking-color-hover: var(--accent-gold-soft);
+}
+
+.whiteSlide {
+  background: var(--bg-offwhite);
+  color: var(--text-main);
+}
+
+.whiteSlide .opacity-8 {
+  color: var(--text-sub);
+  opacity: 1;
 }
 
 .header-booking-btn {
@@ -36,16 +53,16 @@
 
 .strength-card {
   height: 100%;
-  border: 1px solid #f0e7ea;
+  border: 1px solid #efe5cf;
   border-radius: 14px;
-  background: #fff;
-  box-shadow: 0 8px 24px rgba(196, 138, 149, 0.12);
+  background: var(--surface-offwhite);
+  box-shadow: 0 8px 24px rgba(130, 110, 60, 0.1);
   padding: 24px 20px;
 }
 
 .strength-icon {
   font-size: 34px;
-  color: var(--booking-color);
+  color: var(--accent-gold-deep);
 }
 
 .faq-section .wrap {
@@ -54,12 +71,20 @@
 }
 
 .faq-item {
-  border: 1px solid #efefef;
+  border: 1px solid #ece4d3;
   border-radius: 12px;
-  background: #fff;
+  background: var(--surface-offwhite);
   padding: 18px 20px;
   margin-bottom: 14px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 14px rgba(85, 71, 44, 0.06);
+}
+
+.faq-item h3 {
+  background: #efefef;
+  border-left: 4px solid var(--accent-gold);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--text-main);
 }
 
 .faq-item:last-child {
@@ -70,14 +95,83 @@
   display: none;
 }
 
+.image-fallback-container {
+  position: relative;
+  background: linear-gradient(145deg, #e8e8e8, #dcdcdc);
+  overflow: hidden;
+}
+
+.fallback-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.is-missing-image .fallback-image {
+  opacity: 0;
+}
+
+.image-fallback-container.is-missing-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #ececec, #d7d7d7);
+}
+
+.image-fallback-container.is-missing-image::after {
+  content: attr(data-placeholder-label);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #8b8b8b;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.button,
+button,
+[type="button"],
+[type="submit"],
+a.button,
+.header-booking-btn,
+.mobile-floating-menu a {
+  transition: background-color 0.35s ease, color 0.35s ease, filter 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.button:hover,
+button:hover,
+[type="button"]:hover,
+[type="submit"]:hover,
+a.button:hover,
+.header-booking-btn:hover,
+.mobile-floating-menu a:hover {
+  filter: brightness(1.08);
+}
+
 @media (max-width: 768px) {
   body {
-    padding-bottom: 76px;
+    padding-bottom: 64px;
   }
 
   .hero-copy {
     font-size: 21px;
-    line-height: 1.7;
+    line-height: 1.85;
+    letter-spacing: 0.01em;
+  }
+
+  .strengths-slide .flex.fixedSpaces > li {
+    width: 100%;
+    max-width: 100%;
+    flex: 0 0 100%;
+    margin-bottom: 14px;
+  }
+
+  .strengths-slide .flex.fixedSpaces > li:last-child {
+    margin-bottom: 0;
   }
 
   .mobile-floating-menu {
@@ -88,9 +182,9 @@
     z-index: 9999;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid #ececec;
-    background: #fff;
-    box-shadow: 0 -6px 18px rgba(0, 0, 0, 0.08);
+    border-top: 1px solid #e9dfc8;
+    background: var(--surface-offwhite);
+    box-shadow: 0 -6px 18px rgba(83, 67, 37, 0.12);
   }
 
   .mobile-floating-menu a {
@@ -98,20 +192,22 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2px;
-    min-height: 64px;
-    color: #333;
+    gap: 3px;
+    min-height: 56px;
+    color: var(--text-main);
     text-decoration: none;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
-    padding: 6px 4px;
+    line-height: 1.2;
+    padding: 4px 4px;
   }
 
   .mobile-floating-menu a:first-child {
-    color: var(--booking-color);
+    color: var(--accent-gold-deep);
+    background: rgba(212, 175, 55, 0.08);
   }
 
   .mobile-floating-menu ion-icon {
-    font-size: 19px;
+    font-size: 24px;
   }
 }
